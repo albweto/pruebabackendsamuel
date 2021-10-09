@@ -9,6 +9,8 @@ public class TareaDto {
 
     @NotBlank
     private String nombre;
+    @NotBlank
+    private Date fechaCreacion;
     private boolean finalizado;
     @NotBlank
     private Date fechaVencimiento;
@@ -19,10 +21,11 @@ public class TareaDto {
     public TareaDto() {
     }
 
-    public TareaDto(String nombre, boolean finalizado, Date fechaVencimiento,String nombreUsuario) {
+    public TareaDto(String nombre, boolean finalizado, Date fechaVencimiento,String nombreUsuario,Date fechaCreacion) {
         this.nombre = nombre;
         this.finalizado = finalizado;
         this.fechaVencimiento = fechaVencimiento;
+        this.fechaCreacion = fechaCreacion;
         this.nombreUsuario = nombreUsuario;
     }
 
@@ -59,6 +62,12 @@ public class TareaDto {
         this.fechaVencimiento = fechaVencimiento;
     }
 
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
 
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
 }
 

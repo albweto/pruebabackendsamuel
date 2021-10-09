@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/tarea")
-@CrossOrigin(origins = "*")
+@CrossOrigin
 @Slf4j
 public class TareaController {
 
@@ -48,9 +48,10 @@ public class TareaController {
 
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(@Valid @RequestBody TareaDto tareaDto){
+    public ResponseEntity<?> create(@RequestBody TareaDto tareaDto){
+        log.info(tareaDto.getNombre(),tareaDto.getFechaVencimiento(),tareaDto.getNombreUsuario());
         Usuario usuario = usuarioServices.getByNombreUsuario(tareaDto.getNombreUsuario()).get();
-        Tarea tarea = new Tarea(tareaDto.getNombre(),tareaDto.isFinalizado(),tareaDto.getFechaVencimiento(),usuario);
+        Tarea tarea = new Tarea(tareaDto.getNombre(),tareaDto.isFinalizado(),tareaDto.getFechaVencimiento(),tareaDto.getFechaCreacion(),usuario);
         tareaServices.save(tarea);
         return new ResponseEntity(new Mensaje("Tarea creada"), HttpStatus.OK);
     }

@@ -37,10 +37,11 @@ public class Tarea implements Serializable {
     @JsonIgnore
     private Usuario usuario;
 
-    public Tarea(String nombre, boolean finalizado, Date fechaVencimiento , Usuario usuario) {
+    public Tarea(String nombre, boolean finalizado, Date fechaVencimiento ,Date fechaCreacion, Usuario usuario) {
         this.nombre = nombre;
         this.finalizado = finalizado;
         this.fechaVencimiento = fechaVencimiento;
+        this.fechaCreacion = fechaCreacion;
         this.usuario = usuario;
     }
 
